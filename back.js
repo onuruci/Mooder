@@ -28,7 +28,7 @@ var clientSecret = 'b057b756a4414cd29f5977b69aabb6a1'; //process.env.SPOTIFY_CLI
 var scopes = ['user-read-private', 'user-read-email','user-top-read', 
               'playlist-modify-public', 'user-follow-read', 'user-library-read',
               'playlist-modify-private'],
-  redirectUri = 'http://localhost:5000/callback',
+  redirectUri = 'http://localhost:3000/callback',
   clientId = clientId,
   state = 'user-read-playback-state';
 
@@ -45,31 +45,29 @@ app.get("/", function (request, response){
 
 app.get('/testAuth', (req, res) => {
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
+  console.log(authorizeURL);
   res.redirect(authorizeURL);
 });
 
-app.get('/callback', (req, res) => {
+app.get('/callback', async (req, res) => {
   var code = req.query.code || null;
   if (code === null) {
       console.log("code is null");
   }
 
-  spotifyApi.authorizationCodeGrant(code).then(
-      function(data) {
-        // console.log('The token expires in ' + data.body['expires_in']);
-        // console.log('The access token is ' + data.body['access_token']);
-        // console.log('The refresh token is ' + data.body['refresh_token']);
-        
-        // Set the access token on the API object to use it in later calls
-        accesToken = data.body['access_token'];
-        refreshToken = data.body['refresh_token'];
-        spotifyApi.setAccessToken(data.body['access_token']);
-        spotifyApi.setRefreshToken(data.body['refresh_token']);
-      },
-      function(err) {
-        console.log('Something went wrong!', err);
-      }
-  );
+  try {
+    const data = await spotifyApi.authorizationCodeGrant(code);
+    // console.log('The token expires in ' + data.body['expires_in']);
+    // console.log('The access token is ' + data.body['access_token']);
+    // console.log('The refresh token is ' + data.body['refresh_token']);
+    // Set the access token on the API object to use it in later calls
+    accesToken = data.body['access_token'];
+    refreshToken = data.body['refresh_token'];
+    spotifyApi.setAccessToken(accesToken);
+    spotifyApi.setRefreshToken(refreshToken);
+  } catch (err) {
+    console.log('Something went wrong!', err);
+  }
 
   spotifyApi.getMySavedTracks({
     limit : lim,
@@ -118,7 +116,7 @@ app.get('/callback', (req, res) => {
   });
 
 
-  res.redirect('/testAPI');
+  res.redirect('/authDone');
 });
 
 app.get('/testAPI',(req, res) => {
@@ -127,20 +125,13 @@ app.get('/testAPI',(req, res) => {
 });
 
 app.get('/authDone', (req, res) => {
-  //spotifyApi.setAccessToken(accesToken);
-  spotifyApi.setRefreshToken(refreshToken);
-  var response = spotifyApi.getUser('zamir.mert').then(function(data) {
-    console.log('Some information about this user', data.body);
-  }, function (err) {
-    console.log('Something went wrong!', err);
-  });
-  console.log(response.body);
+  res.send("Your playlist is ready!");
 });
 
 app.post('/login', (req, res) => {
   moodScore = parseFloat(req.body.result);
   console.log(req.body.result);
-  res.send("SA");
+  res.redirect('/testAuth');
 });
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
