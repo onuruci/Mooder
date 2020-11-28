@@ -127,7 +127,7 @@ app.get('/testAPI',(req, res) => {
 });
 
 app.get('/authDone', (req, res) => {
-  res.send("Your playlist is ready!");
+  res.sendFile(__dirname+"/public/callback.html");
 });
 
 app.post('/login', (req, res) => {
