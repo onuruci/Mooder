@@ -10,6 +10,7 @@ var refreshToken = null;
 var moodScore = 0.65;
 var lim = 50; //max #songs to look for
 var offset = 0.05; //determines range for moodScore
+var playlistURL = null;
 //var topTrackIds = [];
 
 app.use(express.static('public'));
@@ -96,8 +97,9 @@ app.get('/callback', async (req, res) => {
     })
 
     //Create Playlist with filtered songs
-    spotifyApi.createPlaylist('Mooder Playlist', { 'description': 'My description', 'public': true })
+    spotifyApi.createPlaylist('Mooder Playlist', { 'description': 'Enjoy your special playlist!', 'public': true })
     .then(function(data) {
+      playlistURL = data.body.external_urls.spotify; //https://open.spotify.com/playlist/2A8Akbr2I1sLXC0wOM5qUk
       return data.body.id;
     }, function(err) {
       console.log('Something went wrong!', err);
