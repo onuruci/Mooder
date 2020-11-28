@@ -36,7 +36,7 @@
     margin-left: 5px;
     margin-right: 50px;
     margin-top: 25px;
-    background-color: blanchedalmond;
+    background-color: green;
     min-width: 470px;
     min-height: 300px;
     align-content: center;
@@ -49,12 +49,23 @@
 #last {
     margin-top: 60px;
     margin-bottom: 100px;
-    background-color: chartreuse;
+    background-color: green;
     justify-items: center;
     justify-content: center;
 }
 
 #sender {
-    margin-left: 44%;
+    margin-left: 42%;
     margin-right: auto;
+}
+
+#sub {
+    border: transparent;
+    background-color: black;
+    height: 80px;
+    width: 150px;
+    border-radius: 20px;
+    color: blanchedalmond;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
 }

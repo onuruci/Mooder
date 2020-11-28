@@ -8,8 +8,8 @@ let sender = document.querySelector("#sender");
 function resizeImage(img) {
     if(img.style.width !== "300px")
     {
-        img.style.width = "300px";
-        img.style.height = "200px";
+        img.style.width = "376px";
+        img.style.height = "240px";
         img.style.opacity = 0.7;
         count++;
     }
@@ -22,13 +22,15 @@ function resizeImage(img) {
     }
 }
 
-let images = document.querySelectorAll("img");
+let images = document.querySelectorAll(".image-slide");
 images.forEach(element => {
     element.addEventListener("click", () => {
-        if(element.style.width !== "300px")
+        if(element.style.width !== "427px")
         {
-            element.style.width = "300px";
-            element.style.height = "200px";
+            element.style.width = "427px";
+            element.style.height = "270px";
+            element.style.marginLeft = "21.5px";
+            element.style.marginTop = "15px";
             mood = mood*count;
             mood += parseFloat(element["id"]);
             count++;
@@ -39,6 +41,8 @@ images.forEach(element => {
         {
             element.style.width = "470px";
             element.style.height = "300px";
+            element.style.marginLeft = "0px";
+            element.style.marginTop = "0px";
             mood *= count;
             mood -= parseFloat(element["id"])
             count--;
