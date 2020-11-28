@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: #B1D4E0;">
+    <h1 class="label">Your Spotify playlist is ready!  Yeyy</h1>
+    <div class="logo2">
+        <img alt="" src="./images/dancingman1.png" id="imgClickAndChange" onclick="changeImage()"/>
+        <h2 style="margin-top: -70px">Click On Him!</h2>
+    </div>
+
+    <script>
+         var counter = 1;
+         function changeImage() {
+             if (counter === 1 ) {
+                 counter++;
+                document.getElementById("imgClickAndChange").src = "./images/dancingman2.png";
+             } else {
+                 counter--;
+                document.getElementById("imgClickAndChange").src = "./images/dancingman1.png";
+             }
+        }
+    </script>
+</body>
+</html>
