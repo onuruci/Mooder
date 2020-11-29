@@ -20,8 +20,8 @@ It detects your mood from the pictures you selected.
 #Click to Get It and you will se your playlist.
 
 # Install and run on your machine
-1-Clone the repository to your local directory \n
-2-Install dependencies with the comand: npm install \n 
-3-Run the server with the command: node back.js \n
-4-Check your localhost:3000 on the browser \n
-5-Enjoy your playlists! \n
+1-Clone the repository to your local directory <\br>
+2-Install dependencies with the comand: npm install <\br> 
+3-Run the server with the command: node back.js <\br>
+4-Check your localhost:3000 on the browser <\br>
+5-Enjoy your playlists! <\br>
