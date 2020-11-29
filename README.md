@@ -5,4 +5,4 @@ It uses spotify-web-api-node to connect with your spotify acoount.
 It detects your mood from the pictures you selected.
 
 
-[Alt text](/screenshots/img.jpg?raw=true "Optional Title")
+[Alt text](/screenshots/screenshpt1.png?raw=true "Optional Title")
