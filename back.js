@@ -39,6 +39,11 @@ var spotifyApi = new SpotifyWebApi({
   clientSecret: clientSecret
 });
 
+function genName() {
+  var i = Math.floor(Math.random() * Math.floor(50));
+  return "Mooder Playlist #" + i.toString(10);
+}
+
 app.get("/", function (request, response){
   //show this file when the "/" is requested
   response.sendFile(__dirname+"/public/index.html");
@@ -97,7 +102,7 @@ app.get('/callback', async (req, res) => {
     })
 
     //Create Playlist with filtered songs
-    spotifyApi.createPlaylist('Mooder Playlist', { 'description': 'Enjoy your special playlist!', 'public': true })
+    spotifyApi.createPlaylist(genName(), { 'description': 'Enjoy your special playlist!', 'public': true })
     .then(function(data) {
       playlistURL = data.body.external_urls.spotify; //https://open.spotify.com/playlist/2A8Akbr2I1sLXC0wOM5qUk
       return data.body.id;
@@ -121,14 +126,12 @@ app.get('/callback', async (req, res) => {
   res.redirect('/authDone');
 });
 
-app.get('/testAPI',(req, res) => {
-    res.send("Thanks for giving the authorization!");
-    //console.log(topTrackIds.length);
+app.get('/authDone', (req, res) => {
+  res.sendFile(__dirname+"/public/callback.html");
 });
 
-app.get('/authDone', (req, res) => {
-  console.log(req.result);
-  res.sendFile(__dirname+"/public/callback.html");
+app.get('/spoti', (req, res) => {
+  res.redirect(playlistURL);
 });
 
 app.post('/login', (req, res) => {
@@ -138,12 +141,5 @@ app.post('/login', (req, res) => {
 });
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-app.post('/testPost', urlencodedParser, function (req, res) {
-    res.send(req.body);
-
-    console.log(req.body.username);
-  })
-
 
 app.listen(port);
