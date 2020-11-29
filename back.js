@@ -125,6 +125,7 @@ app.get('/testAPI',(req, res) => {
 });
 
 app.get('/authDone', (req, res) => {
+  console.log(req.result);
   res.sendFile(__dirname+"/public/callback.html");
 });
 

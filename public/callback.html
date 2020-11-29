@@ -6,11 +6,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body style="background-color: #B1D4E0;">
-    <h1 class="label">Your Spotify playlist is ready!  Yeyy</h1>
+<body>
+    <div>
+        <h1 class="label">Your Spotify playlist is ready!  Yeyy</h1>
+    </div>
     <div class="logo2">
-        <img alt="" src="./images/dancingman1.png" id="imgClickAndChange" onclick="changeImage()"/>
-        <h2 style="margin-top: -70px">Click On Him!</h2>
+        <div>
+            <img alt="" src="./images/dancingman1.png" id="imgClickAndChange" onclick="changeImage()"/>
+        </div>
+        <div>
+            <h2 style="margin-top: -70px">Click On Him!</h2>
+        </div>
+        <div>
+            <form action="/spoti" method="get">
+                <input type="submit">
+            </form>
+        </div>
     </div>
 
     <script>
