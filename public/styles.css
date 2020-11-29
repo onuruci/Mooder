@@ -36,6 +36,7 @@
     color: green;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .images{
@@ -50,6 +51,7 @@
 
 .images:hover {
     opacity: 0.7;
+    cursor: pointer;
 }
 
 #last {
@@ -78,4 +80,26 @@
 
 body{
     background-color: whitesmoke;
+}
+
+.outro {
+    text-align: center;
+    font-size: 20px;
+    font-family: Helvetica;
+}
+
+.dance {
+    text-align: center;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.outrologo{
+    width: 60px;
+    margin-left: 48%;
+    margin-top: -50px;
+}
+
+.logo2 {
+    text-align: center;
+    margin-top: -40px;
 }

@@ -8,18 +8,29 @@
 </head>
 <body>
     <div>
-        <h1 class="label">Your Spotify playlist is ready!  Yeyy</h1>
-    </div>
-    <div class="logo2">
         <div>
+            <h1 id="header">Mooder</h1>
+        </div>
+        <div>
+            <img class="outrologo" src="./images/spotifylogo.png" alt="logo">
+        </div>
+        <div class="outro">
+            <h2>
+                Here is your Spotify playlist! Yeyy
+            </h2>
+        </div>
+    </div>
+    <div>
+        <div class="logo2">
             <img alt="" src="./images/dancingman1.png" id="imgClickAndChange" onclick="changeImage()"/>
         </div>
-        <div>
-            <h2 style="margin-top: -70px">Click On Him!</h2>
+        <div class="dance">
+            <h2 style="margin-top: -70px">Click for Dance!</h2>
         </div>
-        <div>
+        <div style="text-align: center;" id="last">
             <form action="/spoti" method="get">
-                <input type="submit">
+                <input type="text" hidden="true" name="result" id="res">
+                <input type="submit" id="sub" placeholder="Search" value="Get It!">
             </form>
         </div>
     </div>
@@ -38,3 +49,4 @@
     </script>
 </body>
 </html>
+
